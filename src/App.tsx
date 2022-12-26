@@ -58,7 +58,7 @@ const App = () => {
     setTheme(theme=>theme == themes.light ? themes.dark : themes.light)
   }
   let labos = ["labo4", "labo5", "labo6", "labo7"]
-  let components = [{name:"Color Select",link:"/labo4/colorselect"},{name:"Counter List",link:"/labo4/counterlist"},{name:"Filtering",link:"/labo4/filtering"},{name:"Shopping List",link:"/labo4/shoppinglist"},{name:"Slot Machine",link:"/labo4/slotmachine"},{name:"Tic Tac Toe",link:"/labo4/tictactoe"},{name:"Interval",link:"/labo5/interval"},{name:"Local Storage",link:"/labo5/localstorage"},{name:"Pokemon",link:"/labo5/pokemon"},{name:"Quiz App",link:"/labo6/quizapp"},{name:"To Do",link:"/labo6/todo"},{name:"Pokemon2",link:"/labo7"}]
+  let components = [{name:"Color Select",link:"/labo4/colorselect"},{name:"Counter List",link:"/labo4/counterlist"},{name:"Filtering",link:"/labo4/filtering"},{name:"Shopping List",link:"/labo4/shoppinglist"},{name:"Slot Machine",link:"/labo4/slotmachine"},{name:"Tic Tac Toe",link:"/labo4/tictactoe"},{name:"Interval",link:"/labo5/interval"},{name:"Local Storage",link:"/labo5/localstorage"},{name:"Pokemon",link:"/labo5/pokemon"},{name:"Quiz App",link:"/labo6/quizapp"},{name:"To Do",link:"/labo6/todo"},{name:"Pokemon2",link:"/labo7/"}]
 
   const router = createBrowserRouter([
     {
@@ -83,6 +83,28 @@ const App = () => {
         },
         {
           path: "labo7/",
+          element: <PokemonRoot />,
+          children: [
+            {
+              path: "",
+              element: <PokemonHome />
+            },
+            {
+              path: "pokemon",
+              element: <Pokemon />
+            },
+            {
+              path: "pokemon/:id",
+              element: <PokemonDetail BackLink='/labo7/pokemon' />
+            },
+            {
+              path: "labo7/*",
+              element: <Labo7PageNotFound />
+            }
+          ]
+        },
+        {
+          path: "labo7/:fromSearch",
           element: <PokemonRoot />,
           children: [
             {

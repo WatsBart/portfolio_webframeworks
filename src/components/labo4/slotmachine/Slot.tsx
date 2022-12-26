@@ -11,7 +11,7 @@ export const Slot = ({slots, pullLever, leverActive}:SlotProps) => {
     return (
       <React.Fragment>
         <SlotIconRow slots={slots}></SlotIconRow><br />
-        <button onClick={pullLever} disabled={leverActive}>Pull lever</button>
+        <input type="button" onClick={pullLever} disabled={leverActive} value="Pull lever" />
       </React.Fragment>
     )
   }
