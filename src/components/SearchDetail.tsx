@@ -11,7 +11,6 @@ interface SearchProps {
 export const SearchDetail = ({ components}: SearchProps) => {
     const styles = useContext(ThemeContext)
     let { query } = useParams();
-    console.log(query)
     if(query === undefined) query=""
     return (
     <div>

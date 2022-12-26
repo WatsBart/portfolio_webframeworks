@@ -2,11 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import ThemeContext from "../styles/ThemeContext";
 
-interface dogApi {
-  message: string,
-  status: string
-}
-
 export const Root = () => {
   const [src, setSrc] = useState("")
   useEffect(()=>{

@@ -12,7 +12,6 @@ export const Search = () => {
         <div className="searchExplanation">
             <p>Search for specific components here by typing the name in the input bar and clicking the search button.</p>
         </div>
-
     </div>
   );
 }

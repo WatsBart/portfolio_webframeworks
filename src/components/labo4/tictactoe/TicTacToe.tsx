@@ -44,12 +44,7 @@ export const TicTacToe = () => {
   const checkVertical = () => {
     for(let i = 0;i<3;i++){
       if(board[i]===board[i+3] && board[i]!==''){
-        console.log("i: " + board[i])
-        console.log("i+3: " + board[i+3])
-        console.log("i+6: " + board[i+6])
         if(board[i]===board[i+6]){
-          
-          console.log("vertical")
           return true
         }
       }
