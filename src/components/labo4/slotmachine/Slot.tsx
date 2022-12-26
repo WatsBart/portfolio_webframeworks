@@ -10,8 +10,8 @@ interface SlotProps {
 export const Slot = ({slots, pullLever, leverActive}:SlotProps) => {
     return (
       <React.Fragment>
+        <SlotIconRow slots={slots}></SlotIconRow><br />
         <button onClick={pullLever} disabled={leverActive}>Pull lever</button>
-        <SlotIconRow slots={slots}></SlotIconRow>
       </React.Fragment>
     )
   }

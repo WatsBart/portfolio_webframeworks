@@ -1,4 +1,4 @@
-import React, { FormEvent, useRef, useState } from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 interface template {
@@ -8,8 +8,14 @@ interface template {
 
 export const Contact = () => {
   const [input, setInput] = useState<template>({name:"",message:""})
+  const [confirmationMessage, setConfirmationMessage] = useState("test")
+
+  useEffect(()=>{
+    setConfirmationMessage("")
+  },[])
 
   const sendEmail = (e:FormEvent) => {
+    setConfirmationMessage("Email sent")
     e.preventDefault()
     
     let templateParams = {
@@ -23,15 +29,20 @@ export const Contact = () => {
       }, (error) => {
           console.log(error.text);
       });
+    setInput({name:"",message:""})
   };
 
   return (
-    <form onSubmit={(event)=>sendEmail(event)}>
+    <div>
+      <form onSubmit={(event)=>sendEmail(event)}>
       <label>Name: </label><br />
-      <input onChange={(event)=>setInput({name:event.target.value,message:input.message})} type="text" name="name" /><br />
+      <input value={input.name} onChange={(event)=>setInput({name:event.target.value,message:input.message})} type="text" name="name" /><br />
       <label>Message: </label><br />
-      <textarea onChange={(event)=>setInput({name:input.name,message:event.target.value})} name="message" /><br />
+      <textarea value={input.message} onChange={(event)=>setInput({name:input.name,message:event.target.value})} name="message" /><br />
       <input type="submit" value="Send" />
     </form>
+    <p>{confirmationMessage}</p>
+    </div>
+    
   );
 };

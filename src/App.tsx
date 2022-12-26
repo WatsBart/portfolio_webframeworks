@@ -24,11 +24,20 @@ import { PokemonRoot } from './components/labo7/PokemonRoot';
 import { Labos } from './components/Labos';
 import { PageNotFound } from './components/PageNotFound';
 import { Root } from './components/Root';
+import { Search } from './components/Search';
+import { SearchDetail } from './components/SearchDetail';
+import ThemeContext, {themes} from './styles/ThemeContext'
+import './styles/Styles.css'
 
 const link = "https://pokeapi.co/api/v2/pokemon?limit=500";
-const emptyData = {count:0,next:"",previous:"",results:[]};
+const emptyData = { count: 0, next: "", previous: "", results: [] };
+
+interface themecontextInterface {
+  readonly [key:string]:string
+}
 
 export const PokeContext = React.createContext<data>(emptyData);
+//export let ThemeContext = React.createContext<themecontextInterface>(lightTheme)
 
 interface data {
   count: number,
@@ -37,8 +46,19 @@ interface data {
   results: { name: string, url: string }[]
 }
 
+export interface component {
+  name: string,
+  link: string
+}
+
 const App = () => {
-  let labos = ["labo4","labo5","labo6","labo7"]
+  const [apiData, setData] = useState<data>(emptyData);
+  const [selectedTheme, setTheme] = useState(themes.light)
+  const changeTheme = () =>{
+    setTheme(theme=>theme == themes.light ? themes.dark : themes.light)
+  }
+  let labos = ["labo4", "labo5", "labo6", "labo7"]
+  let components = [{name:"Color Select",link:"/labo4/colorselect"},{name:"Counter List",link:"/labo4/counterlist"},{name:"Filtering",link:"/labo4/filtering"},{name:"Shopping List",link:"/labo4/shoppinglist"},{name:"Slot Machine",link:"/labo4/slotmachine"},{name:"Tic Tac Toe",link:"/labo4/tictactoe"},{name:"Interval",link:"/labo5/interval"},{name:"Local Storage",link:"/labo5/localstorage"},{name:"Pokemon",link:"/labo5/pokemon"},{name:"Quiz App",link:"/labo6/quizapp"},{name:"To Do",link:"/labo6/todo"},{name:"Pokemon2",link:"/labo7"}]
   const router = createBrowserRouter([
     {
       path: "/",
@@ -50,7 +70,15 @@ const App = () => {
         },
         {
           path: "/labos",
-          element: <Labos labos={labos}/>
+          element: <Labos labos={labos} />
+        },
+        {
+          path: "search",
+          element: <Search></Search>
+        },
+        {
+          path: "search/:query",
+          element: <SearchDetail components={components} />
         },
         {
           path: "labo7/",
@@ -66,7 +94,7 @@ const App = () => {
             },
             {
               path: "pokemon/:id",
-              element: <PokemonDetail BackLink='/labo7/pokemon'/>
+              element: <PokemonDetail BackLink='/labo7/pokemon' />
             },
             {
               path: "labo7/*",
@@ -89,7 +117,39 @@ const App = () => {
           ]
         },
         {
+          path: "labo6/:fromSearch",
+          element: <Labo6Root />,
+          children: [
+            {
+              path: "quizapp",
+              element: <Labo6Quiz />
+            },
+            {
+              path: "todo",
+              element: <Labo6Todo />
+            }
+          ]
+        },
+        {
           path: "labo5/",
+          element: <Labo5Root />,
+          children: [
+            {
+              path: "interval",
+              element: <Labo5Interval />
+            },
+            {
+              path: "localstorage",
+              element: <Labo5LocalStorage />
+            },
+            {
+              path: "pokemon",
+              element: <Labo5Pokemon />
+            }
+          ]
+        },
+        {
+          path: "labo5/:fromSearch",
           element: <Labo5Root />,
           children: [
             {
@@ -137,6 +197,36 @@ const App = () => {
           ]
         },
         {
+          path: "labo4/:fromSearch",
+          element: <Labo4Root />,
+          children: [
+            {
+              path: "colorselect",
+              element: <ColorSelect />
+            },
+            {
+              path: "counterlist",
+              element: <CounterList />
+            },
+            {
+              path: "filtering",
+              element: <Filtering />
+            },
+            {
+              path: "shoppinglist",
+              element: <ShoppingList />
+            },
+            {
+              path: "slotmachine",
+              element: <SlotMachine />
+            },
+            {
+              path: "tictactoe",
+              element: <TicTacToe />
+            }
+          ]
+        },
+        {
           path: "contact",
           element: <Contact />
         },
@@ -148,8 +238,6 @@ const App = () => {
     }
   ]);
 
-  const [apiData, setData] = useState<data>(emptyData);
-
   useEffect(() => {
     const fetchFunction = async () => {
       let result = await fetch(link);
@@ -160,12 +248,16 @@ const App = () => {
   }, []);
 
   return (
-    <PokeContext.Provider value={apiData}>
-      <div>
-        <RouterProvider router={router} />
-      </div>
-    </PokeContext.Provider>
+    <ThemeContext.Provider value={selectedTheme}>
+      <PokeContext.Provider value={apiData}>
+        <div>
+          <button className="themeButton" onClick={()=>changeTheme()}>Change Theme</button>
+          <RouterProvider router={router} />
+        </div>
+      </PokeContext.Provider>
+    </ThemeContext.Provider>
     
+
   )
 }
 

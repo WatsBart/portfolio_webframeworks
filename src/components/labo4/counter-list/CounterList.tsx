@@ -16,7 +16,7 @@ export const CounterList = () => {
       <button onClick={(event)=>{
         setCounters([...counters,0])
       }}>Add counter</button>
-      <p>Som van de tellers: {counters.length > 0 ? counters.reduce((prev,curr)=>prev+curr) : 0}</p>
+      <p>Sum of counters: {counters.length > 0 ? counters.reduce((prev,curr)=>prev+curr) : 0}</p>
     </React.Fragment>
   )
 }

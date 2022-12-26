@@ -1,0 +1,48 @@
+.head {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    height: 15vh;
+}
+
+.container {
+    font-weight: bold;
+}
+
+.nav {
+    background-color: #ff6d8a;
+    display: flex;
+    justify-content: space-evenly;
+    height: 5vh;
+}
+
+.activeNavLink {
+    color: blue;
+}
+
+.navLink {
+    color: darkred;
+}
+
+.content {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    min-height: 75vh;
+}
+
+.footer {
+    background-color: #ff6d8a;
+    text-align: center;
+    height: 5vh;
+}
+
+.themeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.pokemonFooter {
+    width: 100vw;
+    background-color: lightcoral;
+}

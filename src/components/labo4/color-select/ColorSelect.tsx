@@ -29,7 +29,7 @@ export const ColorSelect = () => {
         <option value="white">white</option>
       </select>
       <input type="button" onClick={updateColors} value="Add Colors"></input>
-      <div style={{display:"flex", flexDirection:"column", width:"100vw",height:"40vw"}}>
+      <div style={{display:"flex", flexDirection:"column", width:"100%",height:"40vw"}}>
         {divColors.map((color) => (
           <div style={{width:"50%", height:"50%",backgroundColor:color}}></div>
         ))}

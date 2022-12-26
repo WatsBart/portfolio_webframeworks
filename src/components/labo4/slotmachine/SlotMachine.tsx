@@ -42,7 +42,7 @@ export const SlotMachine = () => {
       <img alt="" width="64" height="64" src={GetSlotIcon(3)}></img>
       <img alt="" width="64" height="64" src={GetSlotIcon(4)}></img>
       <br></br>
-      <p>Saldo: €{money}</p>
+      <p>Amount: €{money}</p>
       <Slot slots={slots} pullLever={rollSlots} leverActive={money<=0}></Slot>
       <Result result={GetResult(slots, winAmount, addMoney, pulledLever, money)}></Result>    
     </Fragment>
@@ -67,7 +67,7 @@ export const GetSlotIcon = (a:number):string => {
 }
 
 const GetResult = (result:number[], winAmount:number, addMoney:(amount:number)=>void, pulledLever:boolean, money:number):string => {
-  if(money<=0) return "Je hebt geen geld meer"
+  if(money<=0) return "You have no more money"
   let won = false;
     for(let i = 0;i<result.length;i++){
       if(!won){
@@ -87,8 +87,8 @@ const GetResult = (result:number[], winAmount:number, addMoney:(amount:number)=>
     }
   }
   if(won){
-    return "Je hebt gewonnen";
+    return "You won";
   }else{
-    return "Je hebt verloren";
+    return "You lost";
   }
 }

@@ -1,18 +1,19 @@
+import { useContext } from "react";
 import { Outlet, NavLink } from "react-router-dom";
-import "./styles/Styles.css" 
+import ThemeContext from "../../styles/ThemeContext";
 
 export const PokemonRoot = () => {
+  const styles = useContext(ThemeContext)
   return (
-    <div className="container">
-      <div className="head">Header</div>
-      <div className="nav">
-        <NavLink className={({ isActive }) => isActive ? "activeNavLink" : "navLink"} to="" >Home</NavLink>
-        <NavLink className={({ isActive }) => isActive ? "activeNavLink" : "navLink"} to="pokemon">Pokémon</NavLink>
+    <div>
+      <div style={styles.nav}>
+        <NavLink style={({ isActive }) => isActive ? styles.activeNavLink : styles.navLink} to="">Home</NavLink>
+        <NavLink style={({ isActive }) => isActive ? styles.activeNavLink : styles.navLink} to="pokemon">Pokémon</NavLink>
       </div>
       <div className="content">
         <Outlet />
       </div>
-      <div className="footer">
+      <div style={styles.footer}>
         Footer
       </div>
     </div>

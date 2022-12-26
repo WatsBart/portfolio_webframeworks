@@ -18,7 +18,7 @@ export const Timer = () => {
   
     return(
       <React.Fragment>
-        <p>{numberOfSeconds}</p>
+        <p>De applicatie is al {numberOfSeconds} second{numberOfSeconds > 1 ? "en" : ""} geopend</p>
         <p>Current time: {time.toLocaleTimeString()}</p>
       </React.Fragment>
     )

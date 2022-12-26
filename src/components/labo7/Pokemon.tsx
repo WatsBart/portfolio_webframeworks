@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PokeContext } from "../../App";
+import ThemeContext from "../../styles/ThemeContext";
 
 export const Pokemon = () => {
     const results = useContext(PokeContext).results;
+    const styles = useContext(ThemeContext)
     return (
       <ul>
         {results.map((pokemon) => {
@@ -11,7 +13,7 @@ export const Pokemon = () => {
           let url = "" + list[list.length-2];
           return(
             <div> 
-              <Link to={url}>{pokemon.name}</Link>
+              <Link to={url} style={styles.links}>{pokemon.name}</Link>
             </div>
           );
         })}
