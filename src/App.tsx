@@ -59,6 +59,7 @@ const App = () => {
   }
   let labos = ["labo4", "labo5", "labo6", "labo7"]
   let components = [{name:"Color Select",link:"/labo4/colorselect"},{name:"Counter List",link:"/labo4/counterlist"},{name:"Filtering",link:"/labo4/filtering"},{name:"Shopping List",link:"/labo4/shoppinglist"},{name:"Slot Machine",link:"/labo4/slotmachine"},{name:"Tic Tac Toe",link:"/labo4/tictactoe"},{name:"Interval",link:"/labo5/interval"},{name:"Local Storage",link:"/labo5/localstorage"},{name:"Pokemon",link:"/labo5/pokemon"},{name:"Quiz App",link:"/labo6/quizapp"},{name:"To Do",link:"/labo6/todo"},{name:"Pokemon2",link:"/labo7"}]
+
   const router = createBrowserRouter([
     {
       path: "/",

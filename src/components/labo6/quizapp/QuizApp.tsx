@@ -1,8 +1,9 @@
 import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
 import TrueFalseQuestion from "./TrueFalseQuestion";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Question } from "./Labo6Quiz"
 import { decode } from "html-entities"
+import ThemeContext from "../../../styles/ThemeContext";
 
 interface IMultipleChoiceQuestion {
     category: string,
@@ -30,7 +31,7 @@ interface QuizAppProps {
 export const QuizApp = ({questions,LoadMore}:QuizAppProps) => {
     const [answers, setAnswers] = useState<string[]>(["","","","","","","","","",""])
     const [answered, setAnswered] = useState<boolean[]>([false,false,false,false,false,false,false,false,false,false])
-
+    const styles = useContext(ThemeContext)
     const checkAnswer = (givenAnswer:string, id:number) => {
         let newAnswers = [...answers]
         newAnswers[id] = givenAnswer
@@ -41,12 +42,12 @@ export const QuizApp = ({questions,LoadMore}:QuizAppProps) => {
     }
 
     return(
-        <div>
+        <div style={styles.answer}>
             {questions.map((question:Question, index) => (
-                <div style={answered[index] ? (answers[index]===question.correct_answer ? {backgroundColor:"lightgreen"} : {backgroundColor:"red"}) : {backgroundColor:"white"}}>
+                <div style={answered[index] ? (answers[index]===question.correct_answer ? styles.rightAnswer : styles.wrongAnswer) : {}}>
                     <div>{decode(question.question)}</div>
                     {answered[index] ? 
-                        <div className="answer">
+                        <div>
                             You answered {decode(answers[index])} 
                             {answers[index] === question.correct_answer ? 
                                 " which is the correct answer"

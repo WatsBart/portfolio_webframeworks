@@ -1,6 +1,9 @@
 import React from 'react'
 export const themes = {
     dark: {
+        title: {
+            color:"lightgray"
+        },
         content:{
             backgroundColor: "darkslategray",
             color: "lightgray"
@@ -21,10 +24,31 @@ export const themes = {
         },
         footer: {
             backgroundColor: "#002b14",
-            width: "100vw",
-        }
+            width: "100%",
+        },
+        labolist: {
+            margin: "0",
+            padding: "2em",
+            fontSize: "2em"
+        },
+        answer: {
+          padding: "1em"  
+        },
+        rightAnswer: {
+            backgroundColor: "#004c1d",
+            color: "lightgray",
+            padding: ".5em"
+        },
+        wrongAnswer: {
+            backgroundColor: "#a0000a",
+            color: "lightgray",
+            padding: ".5em"
+        },
     },
     light: {
+        title: {
+            color: "black"
+        },
         content: {
             backgroundColor: "lightgray",
             color: "black"
@@ -45,8 +69,26 @@ export const themes = {
         },
         footer: {
             backgroundColor: "lightcoral",
-            width: "100vw",
-        }
+            width: "100%",
+        },
+        labolist: {
+            margin: "0",
+            padding: "2em",
+            fontSize: "2em"
+        },
+        answer: {
+          padding: "1em"  
+        },
+        rightAnswer: {
+            backgroundColor: "green",
+            color: "black",
+            padding: ".5em"
+        },
+        wrongAnswer: {
+            backgroundColor: "red",
+            color: "black",
+            padding: ".5em"
+        },
     }
 }
 

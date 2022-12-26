@@ -7,9 +7,9 @@ export const CounterList = () => {
       {
         counters.map((counter, index)=>(
           <div style={{display:'flex'}}>
-            <button type="button" value="Omhoog" onClick={(event)=>setCounters(newCounters(counters,index,counter+1))}>Omhoog</button>
+            <button type="button" value="Up" onClick={(event)=>setCounters(newCounters(counters,index,counter+1))}>Up</button>
             {counter>0?<p style={{color:"green"}}>Count:{counter}</p> : counter<0?<p style={{color:"red"}}>Count:{counter}</p>:<p>Count:{counter}</p>}
-            <button type="button" value="Omlaag" onClick={(event)=>setCounters(newCounters(counters,index,counter-1))}>Omlaag</button>
+            <button type="button" value="Down" onClick={(event)=>setCounters(newCounters(counters,index,counter-1))}>Down</button>
           </div>
         ))
       }

@@ -9,7 +9,7 @@ interface LabosProps {
 export const Labos = ({ labos }: LabosProps) => {
   const styles = useContext(ThemeContext)
   return (
-    <ul>
+    <ul style={styles.labolist}>
       {labos.map((labo) => {
         let url = "/" + labo
         return (
